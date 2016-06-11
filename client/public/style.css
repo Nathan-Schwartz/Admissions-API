@@ -3,7 +3,6 @@ html, body{
   padding:0;
   position: relative;
   display: block;
-
 }
 
 h1{
@@ -12,11 +11,26 @@ h1{
   color: #3b464e;
 }
 
+
 input{
   width: 100%;
   line-height: 150%;
   font-size: 14px;
   margin-top: 15px;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  line-height: 150%;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.caption{
+  margin-top: 15px;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #3b464e;
 }
 
 .profile-picture{
@@ -116,8 +130,6 @@ input{
   background: #E6E6F2;
   padding: 30px;
   margin: 20px;
-  /*width:100%;*/
-  /*height: 100px;*/
 }
 
 

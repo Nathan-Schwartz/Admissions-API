@@ -61,12 +61,13 @@ module.exports.view = function (ctrl, options) {
           m.route('/')
         }
       },[
-        // TODO: Pull these names from the backend "interviewer" table
+        m('div.caption', 'Intervier\'s Name'),
         m('select#interviewer-name', [
             m('option[value=""]', "-Choose an Interviewer-"),
             ...App.interviewers.map(name => m('option[value='+name+']', name))
         ]),
         m('br'),
+        m('div.caption', 'Admission Recommendation'),
         m('select#interview-decision', {
           onchange: function(e){
             // TODO: is there a better way to grab the value of this select menu
@@ -83,14 +84,18 @@ module.exports.view = function (ctrl, options) {
 
         data.decision !== "Soft Reject"
          ? null 
-         : m('input#blackout-period[type="number"]'),
+         : m('div',[
+             m('div.caption', 'How long should they wait before re-interviewing? (weeks)'),
+             m('input#blackout-period[type="number"]'),
+           ]),
+        m('br'),
+
+        m('div.caption', 'Decision Reasoning'),
+        m('textarea#decision-notes', {rows:"4",placeholder:"Why?"}),
 
         m('br'),
 
-        m('input#decision-notes[type="number"placeholder="Why?"]'),
-
-        m('br'),
-
+        m('div.caption', 'Personal Grade'),
         m('select#personal-grade', [
           m('option[value=""]', "-Choose a Personal Grade-"),
           m('option[value="A"]', "A"),
@@ -102,10 +107,12 @@ module.exports.view = function (ctrl, options) {
 
         m('br'),
 
-        m('input#personal-grade-notes[type="number"placeholder="Why?"]'),
+        m('div.caption', 'Reasons for Personal Grade'),
+        m('textarea#personal-grade-notes', {rows:"4",placeholder:"Why?"}),
 
         m('br'),
 
+        m('div.caption', 'Technical Grade'),
         m('select#technical-grade', [
           m('option[value=""]', "-Choose a Technical Grade-"),
           m('option[value="A"]', "A"),
@@ -116,8 +123,8 @@ module.exports.view = function (ctrl, options) {
         ]),
 
         m('br'),
-
-        m('input#technical-grade-notes[type="number"placeholder="Why?"]'),
+        m('div.caption', 'Reasons for Technical Grade'),
+        m('textarea#technical-grade-notes', {rows:"4",placeholder:"Why?"}),
 
         m("br"),
         m('button.button-inverse-ghost[type=submit]', "Submit")
