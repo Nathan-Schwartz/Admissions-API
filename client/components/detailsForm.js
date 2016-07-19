@@ -1,7 +1,7 @@
 var m = require('mithril')
 var Menu = require('./menu')
 
-// TODO: data validation, post request
+// TODO: data validation
 
 module.exports.controller = function (options) {
   var ctrl = this;
@@ -82,6 +82,11 @@ module.exports.view = function (ctrl, options) {
           m('option[value="Hard Reject"]', "Hard Reject")
         ]),
 
+        m('div.caption', 'startDate'),
+        m('div.caption', 'preferred location'),
+        m('div.caption', 'Review materials'),
+        m('div.caption', 'Anything special you want admissions to communicate to the interviewee'),
+
         data.decision !== "Soft Reject"
          ? null 
          : m('div',[
@@ -90,8 +95,8 @@ module.exports.view = function (ctrl, options) {
            ]),
         m('br'),
 
-        m('div.caption', 'Decision Reasoning'),
-        m('textarea#decision-notes', {rows:"4",placeholder:"Why?"}),
+        m('div.caption', 'Decision Explanation. What did they do well? Would you pair program with them? Would you feel proud to call them a MakerSquare graduate? Any concerns?'),
+        m('textarea#decision-notes', {rows:"4",placeholder:""}),
 
         m('br'),
 
@@ -107,7 +112,9 @@ module.exports.view = function (ctrl, options) {
 
         m('br'),
 
-        m('div.caption', 'Reasons for Personal Grade'),
+        m('div.caption', 'Educational & work background / hire-ability, Coding background, Interest in coding, Interest in / knowledge of MakerSquare, Are you pursuing other opportunities concurrent with your application to MakerSquare? (bootcamps, degree programs, jobs, etc.)?'),
+
+        m('div.caption', 'Reasons for Personal Grade. What were the red flags? Other important notes / potential problems with the applicant (be descriptive)? Drive & personality (e.g. patient? excited to try new things?)? Did they do a good job articulating their through process? Were they receptive to feedback?'),
         m('textarea#personal-grade-notes', {rows:"4",placeholder:"Why?"}),
 
         m('br'),
@@ -123,7 +130,7 @@ module.exports.view = function (ctrl, options) {
         ]),
 
         m('br'),
-        m('div.caption', 'Reasons for Technical Grade'),
+        m('div.caption', 'Reasons for Technical Grade. What were the tricky parts for the applicant? How far did they get? Which sections required help? What did the applicant struggle with?'),
         m('textarea#technical-grade-notes', {rows:"4",placeholder:"Why?"}),
 
         m("br"),
